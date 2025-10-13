@@ -1,6 +1,8 @@
-yum install java-17-amazon-corretto -y
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.108/bin/apache-tomcat-9.0.108.tar.gz
-tar -zxvf apache-tomcat-9.0.108.tar.gz
+sudo yum install java-11-amazon-corretto-devel -y
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:/bin/java::")
+export JRE_HOME=$JAVA_HOME
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.110/bin/apache-tomcat-9.0.110.tar.gz
+tar -zxvf apache-tomcat-9.0.110.tar.gz
 sed -i '56  a\<role rolename="manager-gui"/>' apache-tomcat-9.0.108/conf/tomcat-users.xml
 sed -i '57  a\<role rolename="manager-script"/>' apache-tomcat-9.0.108/conf/tomcat-users.xml
 sed -i '58  a\<user username="tomcat" password="admin@123" roles="manager-gui, manager-script"/>' apache-tomcat-9.0.108/conf/tomcat-users.xml
